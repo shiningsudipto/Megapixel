@@ -1,0 +1,82 @@
+[
+    {
+        "image": "landscape.jpg",
+        "name": "Landscape Photography",
+        "instructorName": "Ansel Adams",
+        "instructorEmail": "ansel.adams@example.com",
+        "availableSeats": 40,
+        "price": "$200"
+    },
+    {
+        "image": "documentary.jpg",
+        "name": "Documentary/Photojournalism",
+        "instructorName": "Steve McCurry",
+        "instructorEmail": "steve.mccurry@example.com",
+        "availableSeats": 40,
+        "price": "$250"
+    },
+    {
+        "image": "portrait.jpg",
+        "name": "Portrait Photography",
+        "instructorName": "Annie Leibovitz",
+        "instructorEmail": "annie.leibovitz@example.com",
+        "availableSeats": 40,
+        "price": "$180"
+    },
+    {
+        "image": "fashion.jpg",
+        "name": "Fashion Photography",
+        "instructorName": "Helmut Newton",
+        "instructorEmail": "helmut.newton@example.com",
+        "availableSeats": 40,
+        "price": "$220"
+    },
+    {
+        "image": "wildlife.jpg",
+        "name": "Wildlife Photography",
+        "instructorName": "Frans Lanting",
+        "instructorEmail": "frans.lanting@example.com",
+        "availableSeats": 40,
+        "price": "$230"
+    },
+    {
+        "image": "social_documentary.jpg",
+        "name": "Social Documentary Photography",
+        "instructorName": "Sebastião Salgado",
+        "instructorEmail": "sebastiao.salgado@example.com",
+        "availableSeats": 40,
+        "price": "$270"
+    },
+    {
+        "image": "conceptual.jpg",
+        "name": "Conceptual Photography",
+        "instructorName": "Cindy Sherman",
+        "instructorEmail": "cindy.sherman@example.com",
+        "availableSeats": 40,
+        "price": "$190"
+    },
+    {
+        "image": "surreal.jpg",
+        "name": "Surreal/Fine Art Photography",
+        "instructorName": "David LaChapelle",
+        "instructorEmail": "david.lachapelle@example.com",
+        "availableSeats": 40,
+        "price": "$240"
+    },
+    {
+        "image": "conservation.jpg",
+        "name": "Conservation Photography",
+        "instructorName": "Nick Brandt",
+        "instructorEmail": "nick.brandt@example.com",
+        "availableSeats": 40,
+        "price": "$210"
+    },
+    {
+        "image": "cultural.jpg",
+        "name": "Cultural Photography",
+        "instructorName": "Jimmy Nelson",
+        "instructorEmail": "jimmy.nelson@example.com",
+        "availableSeats": 40,
+        "price": "$260"
+    }
+]
