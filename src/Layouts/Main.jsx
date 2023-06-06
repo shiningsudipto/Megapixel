@@ -1,8 +1,9 @@
+import { Outlet } from "react-router-dom";
 
 const Main = () => {
     return (
         <div>
-            <h2 className="text-5xl">Hello</h2>
+            <Outlet />
         </div>
     );
 };
