@@ -13,7 +13,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar text-fuchsia-500">
+            <div className="navbar text-fuchsia-400 fixed z-10 bg-slate-950 bg-opacity-50">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -24,12 +24,12 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex items-center">
-                        <img src={logo} className="h-14" alt="" />
+                        <img src={logo} className="lg:h-14 h-10" alt="" />
                         <p className="cursor-pointer text-3xl font-semibold ms-3">{siteName}</p>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 text-xl">
+                    <ul className="menu menu-horizontal px-1 text-xl font-semibold">
                         {navOptions}
                     </ul>
                 </div>
