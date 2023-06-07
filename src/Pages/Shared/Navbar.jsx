@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from '../../../public/megapixel-fuchsia.png'
+import useAuth from "../../Hook/useAuth";
 
 const Navbar = () => {
+    const { logOut, user } = useAuth();
+    console.log(user);
     const navOptions = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
@@ -11,6 +14,17 @@ const Navbar = () => {
     const siteName = <>
         <Link to='/'>Megapixel</Link>
     </>
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('successfully logged out');
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     return (
         <div>
             <div className="navbar text-fuchsia-400 fixed z-10 bg-slate-950 bg-opacity-80">
@@ -34,7 +48,12 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login" className="outline outline-2 rounded-lg py-2 px-3 text-fuchsia-500 font-bold bg-transparent hover:bg-fuchsia-500 hover:text-white">Login</Link>
+                    {
+                        user ?
+                            <p onClick={handleLogOut} className="border border-2 border-fuchsia-600 rounded-lg py-2 px-3 text-fuchsia-500 font-bold bg-transparent hover:bg-fuchsia-500 hover:text-white">Logout</p>
+                            :
+                            <Link to="/login" className="border border-2 border-fuchsia-600 rounded-lg py-2 px-3 text-fuchsia-500 font-bold bg-transparent hover:bg-fuchsia-500 hover:text-white">Login</Link>
+                    }
                 </div>
             </div>
         </div>
