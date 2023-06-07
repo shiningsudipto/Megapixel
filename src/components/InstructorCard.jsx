@@ -10,7 +10,8 @@ const InstructorCard = ({ instructor }) => {
                 <h3 className="text-3xl font-bold text-fuchsia-500 my-2">{name}</h3>
                 {
                     location.pathname === '/instructors' && <div>
-                        <h3 className="text-xl font-semibold">Email: {email}</h3>
+                        <h3 className="text-xl font-semibold">Email:
+                            <span className="text-md font-normal"> {email}</span></h3>
                     </div>
                 }
             </div>

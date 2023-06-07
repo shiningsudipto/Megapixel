@@ -14,7 +14,7 @@ const SingleClass = ({ classItem }) => {
                         <p>Available Seats: {availableSeats}</p>
                         <p>Price: {price}</p>
                     </div>
-                    <button className="btn bg-fuchsia-600 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700 hover:text-fuchsia-500}">Select</button>
+                    <button className="btn bg-fuchsia-600 hover:text-fuchsia-500 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700 }">Select</button>
                 </div>
             </div>
         </div>
