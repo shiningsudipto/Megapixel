@@ -3,6 +3,7 @@ import BtnFuchsia from "../../components/BtnFuchsia";
 import PageTitle from "../../components/PageTitle";
 import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
+import SocialLogin from "../../components/SocialLogin";
 
 const Registration = () => {
     const [error, setError] = useState('');
@@ -119,6 +120,9 @@ const Registration = () => {
                         </div>
                     </form>
                     <p className="text-red-600">{error}</p>
+                    <div>
+                        <SocialLogin />
+                    </div>
                 </div>
             </div>
         </div>
