@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import BtnFuchsia from "../../components/BtnFuchsia";
 import PageTitle from "../../components/PageTitle";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -32,6 +33,9 @@ const Login = () => {
                             <BtnFuchsia type="submit" btnText={"Login"}></BtnFuchsia>
                         </div>
                     </form>
+                    <div>
+                        <p>Don't have an account? Please <Link to="/registration">Register</Link></p>
+                    </div>
                 </div>
             </div>
         </div>
