@@ -1,6 +1,6 @@
 import useInstructors from "../../Hook/useInstructors";
 import SectionTitle from "../../components/SectionTitle";
-import InstructorCard from "./InstructorCard";
+import InstructorCard from "../../components/InstructorCard";
 
 const InstructorSection = () => {
     const [instructors] = useInstructors();

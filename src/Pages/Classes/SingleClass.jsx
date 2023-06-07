@@ -9,7 +9,7 @@ const SingleClass = ({ classItem }) => {
                 </figure>
                 <div className="card-body">
                     <h2 className="text-2xl font-semibold text-fuchsia-500">{name}</h2>
-                    <h3 className="text-xl font-bold">{instructorName}</h3>
+                    <h3 className="text-xl font-bold">Instructor: {instructorName}</h3>
                     <div className="font-semibold">
                         <p>Available Seats: {availableSeats}</p>
                         <p>Price: {price}</p>
