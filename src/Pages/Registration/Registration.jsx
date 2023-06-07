@@ -4,8 +4,11 @@ import PageTitle from "../../components/PageTitle";
 import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
 import SocialLogin from "../../components/SocialLogin";
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Registration = () => {
+    const navigate = useNavigate();
     const [error, setError] = useState('');
     const { createUser, updateUserProfile } = useAuth();
     const {
@@ -25,6 +28,20 @@ const Registration = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         console.log('Profile updated');
+                        const saveUser = { name: data.name, email: data.email, image: data.photoURL, role: 'student' }
+                        fetch('http://localhost:5000/newUser', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    navigate('/')
+                                }
+                            })
                     }).catch((error) => {
                         setError(error)
                     });
@@ -115,10 +132,11 @@ const Registration = () => {
                                 <p className="text-error">Passwords do not match</p>
                             )}
                         </div>
-                        <div className="w-full">
+                        <div className="w-full my-3">
                             <BtnFuchsia type="submit" btnText={"Register"}></BtnFuchsia>
                         </div>
                     </form>
+                    <p>Have an account? Please <Link to="/login" className="text-fuchsia-600">Login</Link> </p>
                     <p className="text-red-600">{error}</p>
                     <div>
                         <SocialLogin />
