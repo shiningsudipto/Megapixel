@@ -1,4 +1,5 @@
 import ClassSection from "./ClassSection";
+import InstructorSection from "./InstructorSection";
 import Slider from "./Slider";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             <Slider />
             <ClassSection />
+            <InstructorSection />
         </div>
     );
 };
