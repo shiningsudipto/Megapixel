@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home";
+import Classes from "../Pages/Classes/Classes";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -11,6 +12,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/classes',
+                element: <Classes />
             }
         ]
     },
