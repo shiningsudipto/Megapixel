@@ -1,3 +1,4 @@
+import BtnFuchsia from "../../components/BtnFuchsia";
 
 const SingleClass = ({ classItem }) => {
     const { image, name, instructorName, price, availableSeats, _id } = classItem;
@@ -14,7 +15,7 @@ const SingleClass = ({ classItem }) => {
                         <p>Available Seats: {availableSeats}</p>
                         <p>Price: {price}</p>
                     </div>
-                    <button className="btn bg-fuchsia-600 hover:text-fuchsia-500 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700 }">Select</button>
+                    <BtnFuchsia btnText={"SELECT"}></BtnFuchsia>
                 </div>
             </div>
         </div>
