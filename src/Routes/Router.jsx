@@ -7,6 +7,9 @@ import Classes from "../Pages/Classes/Classes";
 import Instructors from "../Pages/Instructors/Instructors";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
+import Dashboard from "../Layouts/Dashboard";
+import SelectedClass from "../Dashboard/Student/SelectedClass/SelectedClass";
+import EnrolledClass from "../Dashboard/Student/EnrolledClass/EnrolledClass";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -31,6 +34,21 @@ export const router = createBrowserRouter([
             {
                 path: 'registration',
                 element: <Registration />
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard />,
+        children: [
+            // student
+            {
+                path: 'selectedclass',
+                element: <SelectedClass />
+            },
+            {
+                path: 'enrolledclass',
+                element: <EnrolledClass />
             }
         ]
     },
