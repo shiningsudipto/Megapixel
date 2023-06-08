@@ -11,6 +11,8 @@ import Dashboard from "../Layouts/Dashboard";
 import SelectedClass from "../Dashboard/Student/SelectedClass/SelectedClass";
 import EnrolledClass from "../Dashboard/Student/EnrolledClass/EnrolledClass";
 import Payment from "../Dashboard/Student/SelectedClass/Payment";
+import AddAClass from "../Dashboard/Instructor/AddAClass";
+import InstructorsClass from "../Dashboard/Instructor/InstructorsClass";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -55,7 +57,17 @@ export const router = createBrowserRouter([
                 path: 'payment/:id',
                 element: <Payment />,
                 loader: ({ params }) => fetch(`http://localhost:5000/findSelectedClass/${params.id}`)
+            },
+            // Instructor
+            {
+                path: 'addaclass',
+                element: <AddAClass />
+            },
+            {
+                path: 'instructorsclass',
+                element: <InstructorsClass />
             }
+
         ]
     },
 ]);
