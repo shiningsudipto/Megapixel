@@ -6,7 +6,7 @@ const MyClasses = ({ singleClass, refetch }) => {
     const [axiosSecure] = useAxiosSecure();
     const location = useLocation();
     // console.log(location);
-    const { name, image, price, instructorName, availableSeats, _id } = singleClass;
+    const { name, image, price, instructorName, availableSeats, _id, status } = singleClass;
     const handleDelete = async (singleClass) => {
         const res = await axiosSecure.delete(`/deleteSelectedClass/${singleClass._id}`);
         refetch();
@@ -25,6 +25,11 @@ const MyClasses = ({ singleClass, refetch }) => {
                         <div className="font-semibold">
                             <p>Available Seats: {availableSeats}</p>
                             <p>Price: {price}</p>
+                            {
+                                location.pathname === "/dashboard/instructorsclass"
+                                &&
+                                <p>Status: <span className="text-fuchsia-500">{status}</span></p>
+                            }
                         </div>
                         {
                             location.pathname === "/dashboard/selectedclass"

@@ -101,18 +101,6 @@ const CheckoutForm = ({ price, data }) => {
         }
     }
 
-    // const handleAvailableSeats = (classId) => {
-    //     axiosSecure.put(`/updateavailableseats/${classId}`)
-    //         .then(res => {
-    //             console.log("Update available seats:", res);
-    //             // Handle the response if needed
-    //         })
-    //         .catch(error => {
-    //             console.log("Error updating available seats:", error);
-    //             // Handle the error if needed
-    //         });
-    // };
-
     return (
         <div className="text-center">
             <form className="w-3/4 mx-auto p-4" onSubmit={handleSubmit}>
