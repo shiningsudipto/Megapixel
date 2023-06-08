@@ -15,7 +15,8 @@ const SingleClass = ({ classItem }) => {
             name,
             instructorName,
             price,
-            id: _id,
+            availableSeats,
+            ClassId: _id,
         };
         try {
             console.log(selectedClass);
