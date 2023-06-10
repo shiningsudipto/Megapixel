@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import BtnFuchsia from "./BtnFuchsia";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const MyClasses = ({ singleClass, refetch }) => {
     const [axiosSecure] = useAxiosSecure();
@@ -10,6 +11,15 @@ const MyClasses = ({ singleClass, refetch }) => {
     const { name, image, price, instructorName, availableSeats, _id, status } = singleClass;
     const handleDelete = async (singleClass) => {
         const res = await axiosSecure.delete(`/deleteSelectedClass/${singleClass._id}`);
+        if (res.data.deletedCount) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Deleted successfully',
+                showConfirmButton: false,
+                timer: 600
+            })
+        }
         refetch();
         console.log("delete successful:", res.data.deletedCount);
     }
@@ -34,7 +44,7 @@ const MyClasses = ({ singleClass, refetch }) => {
     return (
         <div>
             <div>
-                <div className="card shadow-xl h-full">
+                <div className={`card shadow-xl h-full ${singleClass.availableSeats === 0 ? "bg-red-500" : ""}`}>
                     <figure className="px-6 pt-6">
                         <img src={image} alt="class" className="rounded-xl h-[270px]" />
                     </figure>
