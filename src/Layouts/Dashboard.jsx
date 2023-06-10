@@ -1,3 +1,4 @@
+import { FaCashRegister, FaChalkboardTeacher, FaFolder, FaHome, FaRegPlusSquare, FaUnlockAlt, FaUsersCog } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -15,14 +16,23 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
+
+                        {/* Admin */}
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/manageclasses"><FaChalkboardTeacher /> Manage Classes</NavLink></li>
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/manageusers">
+                            <FaUsersCog /> Manage Users</NavLink></li>
+
+                        {/* Instructor */}
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/addaclass">
+                            <FaCashRegister /> Add A Class</NavLink></li>
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/instructorsclass"><FaFolder /> My Class</NavLink></li>
+
                         {/* Student */}
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/addaclass"> Add A Class</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/manageclasses"> Manage Classes</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/manageusers"> Manage Users</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/instructorsclass"> My Class</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/selectedclass"> Selected Class</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/enrolledclass"> Enrolled Class</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/"> Home</NavLink></li>
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/selectedclass"><FaRegPlusSquare /> Selected Class</NavLink></li>
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/enrolledclass"><FaUnlockAlt /> Enrolled Class</NavLink></li>
+
+
+                        <li className="text-xl font-semibold"><NavLink to="/"><FaHome /> Home</NavLink></li>
                     </ul>
                 </div>
             </div>

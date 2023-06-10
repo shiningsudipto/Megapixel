@@ -49,6 +49,10 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
+                        user && <img src={user?.photoURL} className="h-12 rounded-full mx-4 border border-2 border-fuchsia-500" alt="" />
+                    }
+
+                    {
                         user ?
                             <p onClick={handleLogOut} className="border border-2 border-fuchsia-600 rounded-lg py-2 px-3 text-fuchsia-500 font-bold bg-transparent hover:bg-fuchsia-500 hover:text-white">Logout</p>
                             :
