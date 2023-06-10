@@ -1,3 +1,4 @@
+import About from "./About";
 import ClassSection from "./ClassSection";
 import InstructorSection from "./InstructorSection";
 import Slider from "./Slider";
@@ -8,6 +9,7 @@ const Home = () => {
             <Slider />
             <ClassSection />
             <InstructorSection />
+            <About />
         </div>
     );
 };
