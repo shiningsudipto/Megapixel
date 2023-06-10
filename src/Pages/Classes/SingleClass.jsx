@@ -1,6 +1,8 @@
 import useAuth from "../../Hook/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BtnFuchsia from "../../components/BtnFuchsia";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleClass = ({ classItem }) => {
     const [axiosSecure] = useAxiosSecure();
@@ -8,6 +10,10 @@ const SingleClass = ({ classItem }) => {
     const { image, name, instructorName, price, availableSeats } = classItem;
 
     const handleSelectClass = async (classItem) => {
+        if (!user) {
+            toast("Log in before selecting the course")
+            return;
+        }
         const { image, name, instructorName, price, _id } = classItem;
         const selectedClass = {
             studentEmail: user.email,
@@ -47,6 +53,7 @@ const SingleClass = ({ classItem }) => {
                     </button>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
