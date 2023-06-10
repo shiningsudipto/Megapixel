@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import useAuth from "../../Hook/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BtnFuchsia from "../../components/BtnFuchsia";
@@ -26,9 +27,18 @@ const SingleClass = ({ classItem }) => {
         };
         try {
             console.log(selectedClass);
-            await axiosSecure.post('/selectedClass', selectedClass);
+            const response = await axiosSecure.post('/selectedClass', selectedClass);
             // Handle success, e.g., display a success message or redirect the user
             console.log('Class successfully posted!');
+            if (response.data.insertedId) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Course Added',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+            }
         } catch (error) {
             console.error(error);
             // Handle error, e.g., display an error message

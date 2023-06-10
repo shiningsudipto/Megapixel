@@ -10,15 +10,16 @@ import { useState } from "react";
 const Login = () => {
     const { signIn } = useAuth();
     const [error, setError] = useState('');
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        signIn()
+        signIn(data.email, data.password)
             .then((result) => {
                 setError('');
                 // Signed in 
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                reset();
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -49,7 +50,7 @@ const Login = () => {
                             <input type="text"  {...register("password")} placeholder="password" className="input input-bordered" />
                         </div>
                         <div className="w-full my-3">
-                            <BtnFuchsia type="submit" btnText={"Login"}></BtnFuchsia>
+                            <input className="btn w-full bg-fuchsia-600 hover:text-fuchsia-600 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700" type="submit" value="Sign In" />
                         </div>
                     </form>
                     <div>
