@@ -26,7 +26,7 @@ const AddAClass = () => {
                     const { name, price, availableSeats, instructorName, instructorEmail } = data;
                     const newItem = { name, availableSeats, price: parseFloat(price), instructorName, instructorEmail, image: imgURL, 'status': 'Pending' }
                     console.log(newItem);
-                    axiosSecure.post('/pendingClasses', newItem)
+                    axiosSecure.post('/instructorAddedClasses', newItem)
                         .then(data => {
                             console.log('posted to the database', data.data);
                             if (data.data.insertedId) {

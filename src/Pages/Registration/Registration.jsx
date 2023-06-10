@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import BtnFuchsia from "../../components/BtnFuchsia";
 import PageTitle from "../../components/PageTitle";
 import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
@@ -38,6 +37,7 @@ const Registration = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
+                                console.log("account created");
                                 if (data.insertedId) {
                                     navigate('/')
                                 }
@@ -133,7 +133,8 @@ const Registration = () => {
                             )}
                         </div>
                         <div className="w-full my-3">
-                            <BtnFuchsia type="submit" btnText={"Register"}></BtnFuchsia>
+                            <input className="btn w-full bg-fuchsia-600 hover:text-fuchsia-600 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700" type="submit" value="Register" />
+                            {/* <BtnFuchsia type="submit" btnText={"Register"}></BtnFuchsia> */}
                         </div>
                     </form>
                     <p>Have an account? Please <Link to="/login" className="text-fuchsia-600">Login</Link> </p>

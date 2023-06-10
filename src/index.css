@@ -7,3 +7,7 @@
     background-color: transparent;
     border: 2px solid #D946EF;
 }
+
+/* .myBtn {
+    @apply btn w-full bg-fuchsia-600 hover:text-fuchsia-600 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700
+} */

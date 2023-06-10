@@ -5,6 +5,7 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 const MyClasses = ({ singleClass, refetch }) => {
     const [axiosSecure] = useAxiosSecure();
     const location = useLocation();
+
     // console.log(location);
     const { name, image, price, instructorName, availableSeats, _id, status } = singleClass;
     const handleDelete = async (singleClass) => {
@@ -12,6 +13,24 @@ const MyClasses = ({ singleClass, refetch }) => {
         refetch();
         console.log("delete successful:", res.data.deletedCount);
     }
+
+    const handleStatus = (newStatus, id) => {
+        console.log("Approve Button Clicked");
+        const payload = { newStatus }; // Create an object with the newStatus property
+        fetch(`http://localhost:5000/classes/approve/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json' // Update the header key to 'Content-Type'
+            },
+            body: JSON.stringify(payload) // Stringify the payload object
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch();
+                console.log("newStatus", data);
+            });
+    };
+
     return (
         <div>
             <div>
@@ -26,9 +45,17 @@ const MyClasses = ({ singleClass, refetch }) => {
                             <p>Available Seats: {availableSeats}</p>
                             <p>Price: {price}</p>
                             {
-                                location.pathname === "/dashboard/instructorsclass"
+                                (
+                                    location.pathname === "/dashboard/instructorsclass"
+                                    ||
+                                    location.pathname === "/dashboard/manageclasses") && (
+                                    <p>Status: <span className="text-fuchsia-500">{status}</span></p>
+                                )
+                            }
+                            {
+                                (location.pathname === "/dashboard/instructorsclass" && singleClass?.feedback)
                                 &&
-                                <p>Status: <span className="text-fuchsia-500">{status}</span></p>
+                                <p>Feedback: <span className="text-fuchsia-500">{singleClass?.feedback}</span></p>
                             }
                         </div>
                         {
@@ -39,6 +66,31 @@ const MyClasses = ({ singleClass, refetch }) => {
                                     <button><BtnFuchsia btnText={"Pay"}></BtnFuchsia></button>
                                 </Link>
                                 <button onClick={() => handleDelete(singleClass)}><BtnFuchsia btnText={"Delete"}></BtnFuchsia></button>
+                            </div>
+                        }
+                        {
+                            location.pathname === "/dashboard/manageclasses"
+                            &&
+                            <div className="flex justify-between">
+                                <button onClick={() => handleStatus("Approved", singleClass._id)}
+                                    className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2"
+                                    disabled={singleClass.status === "Approved" || singleClass.status === "Denied"}
+                                >
+                                    {singleClass.status === "Approved" ? "Approved" : "Approve"}
+                                </button>
+                                <button onClick={() => handleStatus("Denied", singleClass._id)}
+                                    className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2"
+                                    disabled={singleClass.status === "Denied" || singleClass.status === "Approved"}>
+                                    {
+                                        singleClass.status === "Denied" ? "Denied" : "Deny"
+                                    }
+                                </button>
+                                {/* The button to open modal */}
+                                <Link to={`/dashboard/feedback/${singleClass._id}`} className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2"
+                                    disabled={singleClass.status === "Approved"}
+                                >
+                                    Feedback
+                                </Link>
                             </div>
                         }
 

@@ -17,6 +17,8 @@ const Dashboard = () => {
                         {/* Sidebar content here */}
                         {/* Student */}
                         <li className="text-xl font-semibold"><NavLink to="/dashboard/addaclass"> Add A Class</NavLink></li>
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/manageclasses"> Manage Classes</NavLink></li>
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/manageusers"> Manage Users</NavLink></li>
                         <li className="text-xl font-semibold"><NavLink to="/dashboard/instructorsclass"> My Class</NavLink></li>
                         <li className="text-xl font-semibold"><NavLink to="/dashboard/selectedclass"> Selected Class</NavLink></li>
                         <li className="text-xl font-semibold"><NavLink to="/dashboard/enrolledclass"> Enrolled Class</NavLink></li>

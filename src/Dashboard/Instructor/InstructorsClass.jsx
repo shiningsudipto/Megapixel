@@ -12,8 +12,10 @@ const InstructorsClass = () => {
             const res = await axiosSecure.get(`/instructorsAddedClass/${user?.email}`)
             return res.data
         }
-    )
+    );
+
     console.log(myAddedClasses);
+
     return (
         <div className="w-full px-6">
             <div className="text-center">
@@ -21,9 +23,9 @@ const InstructorsClass = () => {
                 <h3 className="text-xl font-semibold">My Total Added Class: <span className="text-fuchsia-500">{myAddedClasses.length}</span></h3>
             </div>
             <div className="grid grid-cols-2 gap-8">
-                {
-                    myAddedClasses.map(singleClass => <MyClasses key={singleClass._id} singleClass={singleClass}></MyClasses>)
-                }
+                {Array.isArray(myAddedClasses) && myAddedClasses.map(singleClass => (
+                    <MyClasses key={singleClass._id} singleClass={singleClass} />
+                ))}
             </div>
         </div>
     );

@@ -13,6 +13,9 @@ import EnrolledClass from "../Dashboard/Student/EnrolledClass/EnrolledClass";
 import Payment from "../Dashboard/Student/SelectedClass/Payment";
 import AddAClass from "../Dashboard/Instructor/AddAClass";
 import InstructorsClass from "../Dashboard/Instructor/InstructorsClass";
+import ManageClasses from "../Dashboard/Admin/ManageClasses";
+import Feedback from "../Dashboard/Admin/Feedback";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -66,8 +69,20 @@ export const router = createBrowserRouter([
             {
                 path: 'instructorsclass',
                 element: <InstructorsClass />
+            },
+            // Admin
+            {
+                path: 'manageclasses',
+                element: <ManageClasses />
+            },
+            {
+                path: 'feedback/:id',
+                element: <Feedback />
+            },
+            {
+                path: 'manageusers',
+                element: <ManageUsers />
             }
-
         ]
     },
 ]);
