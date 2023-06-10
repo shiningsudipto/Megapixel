@@ -1,16 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../Hook/useAuth";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
+// import { useQuery } from "@tanstack/react-query";
+// import useAuth from "../../../Hook/useAuth";
+// import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import useEnrolledClass from "../../../Hook/useEnrolledClass";
 
 const EnrolledClass = () => {
-    const { user } = useAuth();
-    const [axiosSecure] = useAxiosSecure();
-    const { data: myEnrolledClass = [] } = useQuery(['myEnrolledClass', user?.email],
-        async () => {
-            const res = await axiosSecure.get(`/myEnrolledClass/${user?.email}`);
-            return res.data;
-        }
-    )
+    // const { user } = useAuth();
+    // const [axiosSecure] = useAxiosSecure();
+    // const { data: myEnrolledClass = [] } = useQuery(['myEnrolledClass', user?.email],
+    //     async () => {
+    //         const res = await axiosSecure.get(`/myEnrolledClass/${user?.email}`);
+    //         return res.data;
+    //     }
+    // )
+    const [myEnrolledClass, isLoading] = useEnrolledClass();
     console.log("myEnrolledClass", myEnrolledClass);
     return (
         <div className="lg:mx-10">

@@ -44,7 +44,7 @@ const MyClasses = ({ singleClass, refetch }) => {
     return (
         <div>
             <div>
-                <div className={`card shadow-xl h-full ${singleClass.availableSeats === 0 ? "bg-red-500" : ""}`}>
+                <div className="card shadow-xl h-full ">
                     <figure className="px-6 pt-6">
                         <img src={image} alt="class" className="rounded-xl h-[270px]" />
                     </figure>
@@ -72,9 +72,15 @@ const MyClasses = ({ singleClass, refetch }) => {
                             location.pathname === "/dashboard/selectedclass"
                             &&
                             <div className="flex justify-between">
-                                <Link to={`/dashboard/payment/${_id}`}>
-                                    <button><BtnFuchsia btnText={"Pay"}></BtnFuchsia></button>
-                                </Link>
+                                {availableSeats !== '0' ? (
+                                    <Link to={`/dashboard/payment/${_id}`}>
+                                        <button className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2">Pay</button>
+                                    </Link>
+                                ) : (
+                                    <button className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2" disabled>
+                                        Pay
+                                    </button>
+                                )}
                                 <button onClick={() => handleDelete(singleClass)}><BtnFuchsia btnText={"Delete"}></BtnFuchsia></button>
                             </div>
                         }

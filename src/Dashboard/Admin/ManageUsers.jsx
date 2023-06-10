@@ -1,14 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
+
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import useUsers from "../../Hook/useUsers";
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
-    const { data: allUsers = [], refetch } = useQuery(['allRegisteredUsers'],
-        async () => {
-            const res = await axiosSecure.get('/allRegisteredUsers');
-            return res.data;
-        }
-    )
+    // const { data: allUsers = [], refetch } = useQuery(['allRegisteredUsers'],
+    //     async () => {
+    //         const res = await axiosSecure.get('/allRegisteredUsers');
+    //         return res.data;
+    //     }
+    // )
+
+    const [allUsers, refetch] = useUsers();
 
     const handleRole = (newRole, id) => {
         axiosSecure
@@ -60,17 +63,19 @@ const ManageUsers = () => {
                                         <div className="flex items-center space-x-4">
                                             <div>
                                                 <button
-                                                    className="btn"
+                                                    disabled={user.role === "Instructor"}
+                                                    className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2"
                                                     onClick={() => handleRole("Instructor", user._id)}
 
-                                                >Instructor</button>
+                                                >Make Instructor</button>
                                             </div>
                                             <div>
                                                 <button
-                                                    className="btn"
+                                                    disabled={user.role === "Admin"}
+                                                    className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2"
                                                     onClick={() => handleRole("Admin", user._id)}
 
-                                                >Admin</button>
+                                                >Make Admin</button>
                                             </div>
                                         </div>
                                     </th>

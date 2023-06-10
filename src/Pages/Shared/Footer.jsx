@@ -40,6 +40,9 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
+            <div className='text-center p-6 bg-fuchsia-700 text-white font-semibold'>
+                <h2>Copyright © 2023 - All right reserved by Megapixel Ltd.</h2>
+            </div>
         </div>
     );
 };

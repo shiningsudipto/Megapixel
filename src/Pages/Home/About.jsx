@@ -22,11 +22,11 @@ const About = () => {
                         <p>With Megapixel, you can learn at your own pace and from the comfort of your home. Our user-friendly platform provides an immersive learning experience, complete with interactive lessons, practical assignments, and feedback from instructors.</p>
                         <p>Unlock your photography potential with Megapixel and embark on a transformative learning experience today. Let your passion for photography flourish and see the world through a new lens!</p>
                     </div>
-                    <div className='grid lg:grid-cols-2 grid-cols-1 gap-4 bg-fuchsia-500 p-4'>
-                        <img className='lg:h-[210px]' src={image} alt="" />
-                        <img className='lg:h-[210px]' src={image1} alt="" />
-                        <img className='lg:h-[210px]' src={image2} alt="" />
-                        <img className='lg:h-[210px]' src={image3} alt="" />
+                    <div className='grid lg:grid-cols-2 grid-cols-1 gap-4 p-4'>
+                        <img className='lg:h-[210px] border p-3 border-fuchsia-600' src={image} alt="" />
+                        <img className='lg:h-[210px] border p-3 border-fuchsia-600' src={image1} alt="" />
+                        <img className='lg:h-[210px] border p-3 border-fuchsia-600' src={image2} alt="" />
+                        <img className='lg:h-[210px] border p-3 border-fuchsia-600' src={image3} alt="" />
                     </div>
                 </div>
             </div>
