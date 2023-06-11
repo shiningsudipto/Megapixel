@@ -1,7 +1,13 @@
 import { FaCashRegister, FaChalkboardTeacher, FaFolder, FaHome, FaMoneyCheckAlt, FaRegPlusSquare, FaUnlockAlt, FaUsersCog } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hook/useAdmin";
+import useInstructor from "../Hook/useInstructor";
+import useStudent from "../Hook/useStudent";
 
 const Dashboard = () => {
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const [isStudent] = useStudent();
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -18,19 +24,32 @@ const Dashboard = () => {
                         {/* Sidebar content here */}
 
                         {/* Admin */}
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/manageclasses"><FaChalkboardTeacher /> Manage Classes</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/manageusers">
-                            <FaUsersCog /> Manage Users</NavLink></li>
+                        {
+                            isAdmin && <>
+                                <li className="text-xl font-semibold"><NavLink to="/dashboard/manageclasses"><FaChalkboardTeacher /> Manage Classes</NavLink></li>
+                                <li className="text-xl font-semibold"><NavLink to="/dashboard/manageusers">
+                                    <FaUsersCog /> Manage Users</NavLink></li>
+                            </>
+                        }
 
                         {/* Instructor */}
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/addaclass">
-                            <FaCashRegister /> Add A Class</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/instructorsclass"><FaFolder /> My Class</NavLink></li>
+                        {
+                            isInstructor && <>
+                                <li className="text-xl font-semibold"><NavLink to="/dashboard/addaclass">
+                                    <FaCashRegister /> Add A Class</NavLink></li>
+                                <li className="text-xl font-semibold"><NavLink to="/dashboard/instructorsclass"><FaFolder /> My Class</NavLink></li>
+                            </>
+                        }
 
                         {/* Student */}
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/selectedclass"><FaRegPlusSquare /> Selected Class</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/enrolledclass"><FaUnlockAlt /> Enrolled Class</NavLink></li>
-                        <li className="text-xl font-semibold"><NavLink to="/dashboard/paymenthistory"><FaMoneyCheckAlt /> Payment History</NavLink></li>
+                        {
+                            isStudent && <>
+                                <li className="text-xl font-semibold"><NavLink to="/dashboard/selectedclass"><FaRegPlusSquare /> Selected Class</NavLink></li>
+                                <li className="text-xl font-semibold"><NavLink to="/dashboard/enrolledclass"><FaUnlockAlt /> Enrolled Class</NavLink></li>
+                                <li className="text-xl font-semibold"><NavLink to="/dashboard/paymenthistory"><FaMoneyCheckAlt /> Payment History</NavLink></li>
+                            </>
+                        }
+
 
 
                         <li className="text-xl font-semibold"><NavLink to="/"><FaHome /> Home</NavLink></li>

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import PageTitle from "../../components/PageTitle";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin";
 import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
@@ -13,18 +13,27 @@ const Login = () => {
     const { register, handleSubmit, reset } = useForm();
     const [showPassword, setShowPassword] = useState(false);
 
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    // console.log(from);
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-    const onSubmit = data => {
-        console.log(data);
+
+
+    const onSubmit = (data) => {
+        // event.preventDefault();
+        // console.log(data);
         signIn(data.email, data.password)
             .then((result) => {
                 setError('');
                 // Signed in 
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                console.log('User:', loggedUser);
                 reset();
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -55,7 +64,7 @@ const Login = () => {
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    {...register("password")}
+                                    {...register("password", { required: true })}
                                     placeholder="password"
                                     className="input input-bordered pr-10 w-full"
                                 />
@@ -73,7 +82,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="w-full my-3">
-                            <input className="btn w-full bg-fuchsia-600 hover:text-fuchsia-600 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700" type="submit" value="Sign In" />
+                            <button type="submit" className="btn w-full bg-fuchsia-600 hover:text-fuchsia-600 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700">Sign In</button>
                         </div>
                     </form>
                     <div>

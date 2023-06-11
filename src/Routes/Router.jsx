@@ -18,6 +18,10 @@ import Feedback from "../Dashboard/Admin/Feedback";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import PaymentHistory from "../Dashboard/Student/PaymentHistory";
 import NotFound from "../Pages/Shared/NotFound";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import StudentRoute from "./StudentRoute";
+import InstructorRoute from "./InstructorRoute";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -36,7 +40,7 @@ export const router = createBrowserRouter([
                 element: <Instructors />
             },
             {
-                path: 'login',
+                path: '/login',
                 element: <Login />
             },
             {
@@ -47,47 +51,47 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             // student
             {
                 path: 'selectedclass',
-                element: <SelectedClass />
+                element: <StudentRoute><SelectedClass /></StudentRoute>
             },
             {
                 path: 'enrolledclass',
-                element: <EnrolledClass />
+                element: <StudentRoute><EnrolledClass /></StudentRoute>
             },
             {
                 path: 'payment/:id',
-                element: <Payment />,
+                element: <StudentRoute> <Payment /></StudentRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/findSelectedClass/${params.id}`)
             },
             {
                 path: 'paymenthistory',
-                element: <PaymentHistory />
+                element: <StudentRoute><PaymentHistory /></StudentRoute>
             },
             // Instructor
             {
                 path: 'addaclass',
-                element: <AddAClass />
+                element: <InstructorRoute><AddAClass /></InstructorRoute>
             },
             {
                 path: 'instructorsclass',
-                element: <InstructorsClass />
+                element: <InstructorRoute> <InstructorsClass /></InstructorRoute>
             },
             // Admin
             {
                 path: 'manageclasses',
-                element: <ManageClasses />
+                element: <AdminRoute><ManageClasses /></AdminRoute>
             },
             {
                 path: 'feedback/:id',
-                element: <Feedback />
+                element: <AdminRoute><Feedback /></AdminRoute>
             },
             {
                 path: 'manageusers',
-                element: <ManageUsers />
+                element: <AdminRoute><ManageUsers /></AdminRoute>
             }
         ]
     },

@@ -42,26 +42,26 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             // get and set token
+            setUser(currentUser);
             if (currentUser) {
                 axios.post('http://localhost:5000/jwt', { email: currentUser.email })
                     .then(data => {
-                        // console.log(data);
-                        // console.log(data.data.token);
-                        localStorage.setItem('access-token', data.data.token)
-                        setUser(currentUser);
-                        // console.log("current user:", currentUser);
+                        localStorage.setItem('access-token', data.data.token);
                         setLoading(false);
                     })
+                    .catch(error => {
+                        console.error('Failed to get JWT token:', error);
+                        setLoading(false);
+                    });
             } else {
-                localStorage.removeItem('access-token')
-                setUser(currentUser);
+                localStorage.removeItem('access-token');
                 setLoading(false);
             }
-        }, [])
-        return () => {
-            return unsubscribe();
-        }
-    })
+        });
+
+        return () => unsubscribe();
+    }, []);
+
 
     const authInfo = {
         user,

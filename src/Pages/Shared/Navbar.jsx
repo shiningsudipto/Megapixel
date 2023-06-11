@@ -1,15 +1,34 @@
 import { Link } from "react-router-dom";
 import logo from '../../../public/megapixel-fuchsia.png'
 import useAuth from "../../Hook/useAuth";
-
+import useAdmin from "../../Hook/useAdmin";
+import useInstructor from "../../Hook/useInstructor";
+import useStudent from "../../Hook/useStudent";
 const Navbar = () => {
+    const [isAdmin] = useAdmin();
+    console.log("User role", isAdmin);
+    const [isInstructor] = useInstructor();
+    // console.log(isInstructor);
+    const [isStudent] = useStudent();
+    // console.log(isStudent);
+
     const { logOut, user } = useAuth();
     // console.log(user);
     const navOptions = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
-        <li><Link to='/dashboard/selectedclass'>Dashboard</Link></li>
+        {
+            isAdmin &&
+            <li><Link to='/dashboard/manageclasses'>Dashboard</Link></li>
+        }
+        {
+            isInstructor && <li><Link to='/dashboard/instructorsclass'>Dashboard</Link></li>
+        }
+        {
+            isStudent && <li><Link to='/dashboard/selectedclass'>Dashboard</Link></li>
+        }
+
     </>
     const siteName = <>
         <Link to='/'>Megapixel</Link>
