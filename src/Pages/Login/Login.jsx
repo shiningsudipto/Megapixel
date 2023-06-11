@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import BtnFuchsia from "../../components/BtnFuchsia";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import PageTitle from "../../components/PageTitle";
 import { Link } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin";
@@ -11,6 +11,11 @@ const Login = () => {
     const { signIn } = useAuth();
     const [error, setError] = useState('');
     const { register, handleSubmit, reset } = useForm();
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
     const onSubmit = data => {
         console.log(data);
         signIn(data.email, data.password)
@@ -41,13 +46,31 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text"  {...register("email")} placeholder="email" className="input input-bordered" />
+                            <input type="text"  {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text"  {...register("password")} placeholder="password" className="input input-bordered" />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    {...register("password")}
+                                    placeholder="password"
+                                    className="input input-bordered pr-10 w-full"
+                                />
+                                {showPassword ? (
+                                    <FaEyeSlash
+                                        className="text-xl text-fuchsia-500 absolute top-1/2 transform -translate-y-1/2 right-3 cursor-pointer"
+                                        onClick={togglePasswordVisibility}
+                                    />
+                                ) : (
+                                    <FaEye
+                                        className="text-xl text-fuchsia-500 absolute top-1/2 transform -translate-y-1/2 right-3 cursor-pointer"
+                                        onClick={togglePasswordVisibility}
+                                    />
+                                )}
+                            </div>
                         </div>
                         <div className="w-full my-3">
                             <input className="btn w-full bg-fuchsia-600 hover:text-fuchsia-600 text-white font-bold hover:bg-transparent hover:border-2 hover:border-fuchsia-700" type="submit" value="Sign In" />
