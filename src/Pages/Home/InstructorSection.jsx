@@ -1,6 +1,7 @@
 import useInstructors from "../../Hook/useInstructors";
 import SectionTitle from "../../components/SectionTitle";
 import InstructorCard from "../../components/InstructorCard";
+import { Slide } from "react-awesome-reveal";
 
 const InstructorSection = () => {
     const [instructors] = useInstructors();
@@ -9,10 +10,13 @@ const InstructorSection = () => {
     return (
         <div>
             <div>
-                <SectionTitle
-                    heading={"popular instructors"}
-                    subHeading={"Most Enrolled Classes Instructors"}
-                ></SectionTitle>
+                <Slide direction="up">
+                    <SectionTitle
+                        heading={"popular instructors"}
+                        subHeading={"Most Enrolled Classes Instructors"}
+                    ></SectionTitle>
+                </Slide>
+
             </div>
             <div className="container mx-auto">
                 <div className="grid lg:grid-cols-3 grid-cols-1 gap-14">

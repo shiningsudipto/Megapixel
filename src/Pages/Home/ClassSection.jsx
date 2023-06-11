@@ -1,6 +1,7 @@
 import useClasses from "../../Hook/useClasses";
 import SectionTitle from "../../components/SectionTitle";
 import ClassCard from "./ClassCard";
+import { Slide } from "react-awesome-reveal";
 
 const ClassSection = () => {
     const [classes] = useClasses();
@@ -9,10 +10,13 @@ const ClassSection = () => {
     return (
         <div>
             <div>
-                <SectionTitle
-                    heading="popular classes"
-                    subHeading="Most Enrolled Classes"
-                ></SectionTitle>
+                <Slide direction="up">
+                    <SectionTitle
+                        heading="popular classes"
+                        subHeading="Most Enrolled Classes"
+                    ></SectionTitle>
+                </Slide>
+
             </div>
             <div className="grid lg:grid-cols-3 grid-cols-1">
                 {
