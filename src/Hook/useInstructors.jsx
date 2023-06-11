@@ -4,7 +4,7 @@ const useInstructors = () => {
     const { data: instructors = [], isLoading } = useQuery({
         queryKey: ['instructors'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/instructors');
+            const res = await fetch('https://assignment-twelve-server-smoky.vercel.app/instructors');
             return res.json();
         }
     })

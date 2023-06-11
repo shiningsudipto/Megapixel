@@ -65,7 +65,7 @@ export const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <StudentRoute> <Payment /></StudentRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/findSelectedClass/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-twelve-server-smoky.vercel.app/findSelectedClass/${params.id}`)
             },
             {
                 path: 'paymenthistory',

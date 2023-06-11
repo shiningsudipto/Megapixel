@@ -8,7 +8,7 @@ const Feedback = () => {
         const feedback = event.target.feedback.value;
         console.log(feedback);
 
-        fetch(`http://localhost:5000/classes/feedback/${id}`, {
+        fetch(`https://assignment-twelve-server-smoky.vercel.app/classes/feedback/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

@@ -27,7 +27,7 @@ const MyClasses = ({ singleClass, refetch }) => {
     const handleStatus = (newStatus, id) => {
         console.log("Approve Button Clicked");
         const payload = { newStatus }; // Create an object with the newStatus property
-        fetch(`http://localhost:5000/classes/approve/${id}`, {
+        fetch(`https://assignment-twelve-server-smoky.vercel.app/classes/approve/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json' // Update the header key to 'Content-Type'
