@@ -17,6 +17,7 @@ import ManageClasses from "../Dashboard/Admin/ManageClasses";
 import Feedback from "../Dashboard/Admin/Feedback";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import PaymentHistory from "../Dashboard/Student/PaymentHistory";
+import NotFound from "../Pages/Shared/NotFound";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -90,4 +91,8 @@ export const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: '*',
+        element: <NotFound />
+    }
 ]);
