@@ -1,4 +1,4 @@
-import { FaCashRegister, FaChalkboardTeacher, FaFolder, FaHome, FaRegPlusSquare, FaUnlockAlt, FaUsersCog } from "react-icons/fa";
+import { FaCashRegister, FaChalkboardTeacher, FaFolder, FaHome, FaMoneyCheckAlt, FaRegPlusSquare, FaUnlockAlt, FaUsersCog } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -30,6 +30,7 @@ const Dashboard = () => {
                         {/* Student */}
                         <li className="text-xl font-semibold"><NavLink to="/dashboard/selectedclass"><FaRegPlusSquare /> Selected Class</NavLink></li>
                         <li className="text-xl font-semibold"><NavLink to="/dashboard/enrolledclass"><FaUnlockAlt /> Enrolled Class</NavLink></li>
+                        <li className="text-xl font-semibold"><NavLink to="/dashboard/paymenthistory"><FaMoneyCheckAlt /> Payment History</NavLink></li>
 
 
                         <li className="text-xl font-semibold"><NavLink to="/"><FaHome /> Home</NavLink></li>

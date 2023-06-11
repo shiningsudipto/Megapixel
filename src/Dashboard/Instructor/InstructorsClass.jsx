@@ -13,6 +13,14 @@ const InstructorsClass = () => {
             return res.data
         }
     );
+    const { data: enrolledClass = [] } = useQuery(['enrolledClass', user?.email],
+        async () => {
+            const res = await axiosSecure.get(`/enrolledClass/${user?.email}`)
+            return res.data
+        }
+    );
+
+
 
     console.log(myAddedClasses);
 
@@ -21,6 +29,7 @@ const InstructorsClass = () => {
             <div className="text-center">
                 <h2 className="text-3xl font-bold text-fuchsia-500 my-3"> My Class</h2>
                 <h3 className="text-xl font-semibold">My Total Added Class: <span className="text-fuchsia-500">{myAddedClasses.length}</span></h3>
+                <h3 className="text-xl font-semibold">Total Enrolled Students: <span className="text-fuchsia-500">{enrolledClass.length}</span></h3>
             </div>
             <div className="grid grid-cols-2 gap-8">
                 {Array.isArray(myAddedClasses) && myAddedClasses.map(singleClass => (

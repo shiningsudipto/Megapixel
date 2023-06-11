@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
                         // console.log(data.data.token);
                         localStorage.setItem('access-token', data.data.token)
                         setUser(currentUser);
-                        console.log("current user:", currentUser);
+                        // console.log("current user:", currentUser);
                         setLoading(false);
                     })
             } else {

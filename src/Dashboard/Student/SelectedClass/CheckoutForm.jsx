@@ -5,8 +5,9 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAuth from "../../../Hook/useAuth";
 
 const CheckoutForm = ({ price, data }) => {
+    console.log('Price:', price);
     console.log("Selected data", data);
-    console.log("selected data ID:", data.ClassId);
+    // console.log("selected data ID:", data.ClassId);
     const stripe = useStripe();
     const { user } = useAuth();
     const elements = useElements();
@@ -77,7 +78,8 @@ const CheckoutForm = ({ price, data }) => {
                 classId: data._id,
                 date: new Date(),
                 name: data?.name,
-                image: data.image
+                image: data.image,
+                instructorEmail: data.instructorEmail
             }
 
             axiosSecure.post('/payments', payment)

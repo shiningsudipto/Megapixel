@@ -10,7 +10,7 @@ const Payment = () => {
     const data = useLoaderData();
     console.log(data);
     const price = parseFloat(data.price);
-    console.log(price, data.price);
+    // console.log(price, data.price);
     return (
         <div>
             <div>

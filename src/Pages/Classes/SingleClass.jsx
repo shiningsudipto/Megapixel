@@ -3,15 +3,19 @@ import useAuth from "../../Hook/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useUsers from "../../Hook/useUsers";
+import useRole from "../../Hook/useRole";
+
 
 
 const SingleClass = ({ classItem }) => {
     const [axiosSecure] = useAxiosSecure();
     const { user } = useAuth();
-    const [allUsers] = useUsers();
-    console.log('All users:', allUsers);
-    const isAdminOrInstructor = allUsers.some(user => user.role === "Admin" || user.role === "Instructor");
+    const [userRole] = useRole();
+    const role = userRole.role;
+    console.log('user role:', role);
+
+
+
     const { image, name, instructorName, price, availableSeats } = classItem;
 
     const handleSelectClass = async (classItem) => {
@@ -19,7 +23,7 @@ const SingleClass = ({ classItem }) => {
             toast("Log in before selecting the course")
             return;
         }
-        const { image, name, instructorName, price, _id } = classItem;
+        const { image, name, instructorName, price, _id, instructorEmail } = classItem;
         const selectedClass = {
             studentEmail: user.email,
             image,
@@ -28,12 +32,11 @@ const SingleClass = ({ classItem }) => {
             price,
             availableSeats,
             ClassId: _id,
+            instructorEmail
         };
         try {
             console.log(selectedClass);
             const response = await axiosSecure.post('/selectedClass', selectedClass);
-            // Handle success, e.g., display a success message or redirect the user
-            // console.log('Class successfully posted!');
             if (response.data.insertedId) {
                 Swal.fire({
                     position: 'top-end',
@@ -49,6 +52,8 @@ const SingleClass = ({ classItem }) => {
         }
     };
 
+    const isDisabled = role === 'Admin' || role === 'Instructor' || availableSeats === '0';
+
     return (
         <div>
             <div className={`card shadow-xl h-full ${classItem.availableSeats === '0' ? 'bg-red-500 text-white' : ''}`}>
@@ -63,7 +68,7 @@ const SingleClass = ({ classItem }) => {
                         <p>Price: {price}</p>
                     </div>
                     <button onClick={() => handleSelectClass(classItem)}
-                        disabled={classItem.availableSeats === '0' || isAdminOrInstructor}
+                        disabled={isDisabled}
                         className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2"
                     >
                         SELECT

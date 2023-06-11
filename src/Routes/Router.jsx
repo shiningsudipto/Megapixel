@@ -16,6 +16,7 @@ import InstructorsClass from "../Dashboard/Instructor/InstructorsClass";
 import ManageClasses from "../Dashboard/Admin/ManageClasses";
 import Feedback from "../Dashboard/Admin/Feedback";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import PaymentHistory from "../Dashboard/Student/PaymentHistory";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
                 path: 'payment/:id',
                 element: <Payment />,
                 loader: ({ params }) => fetch(`http://localhost:5000/findSelectedClass/${params.id}`)
+            },
+            {
+                path: 'paymenthistory',
+                element: <PaymentHistory />
             },
             // Instructor
             {
