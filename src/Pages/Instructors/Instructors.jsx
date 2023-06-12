@@ -4,7 +4,12 @@ import InstructorCard from "../../components/InstructorCard";
 import PageTitle from "../../components/PageTitle";
 
 const Instructors = () => {
-    const [instructors] = useInstructors();
+    const [instructors, isLoading] = useInstructors();
+    if (isLoading) {
+        return <div className="flex justify-center items-center h-screen">
+            <span className="loading loading-ring loading-lg"></span>
+        </div>;
+    }
     return (
         <div>
             <div>

@@ -4,14 +4,12 @@ import useUsers from "../../Hook/useUsers";
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
-    // const { data: allUsers = [], refetch } = useQuery(['allRegisteredUsers'],
-    //     async () => {
-    //         const res = await axiosSecure.get('/allRegisteredUsers');
-    //         return res.data;
-    //     }
-    // )
-
-    const [allUsers, refetch] = useUsers();
+    const [allUsers, refetch, isLoading] = useUsers();
+    if (isLoading) {
+        return <div className="flex justify-center items-center h-screen">
+            <span className="loading loading-ring loading-lg"></span>
+        </div>;
+    }
 
     const handleRole = (newRole, id) => {
         axiosSecure

@@ -3,7 +3,12 @@ import PageTitle from "../../components/PageTitle";
 import SingleClass from "./SingleClass";
 
 const Classes = () => {
-    const [classes] = useClasses();
+    const [classes, isLoading] = useClasses();
+    if (isLoading) {
+        return <div className="flex justify-center items-center h-screen">
+            <span className="loading loading-ring loading-lg"></span>
+        </div>;
+    }
     return (
         <div>
             <div>

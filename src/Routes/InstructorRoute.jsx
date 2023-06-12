@@ -11,7 +11,9 @@ const InstructorRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading || isInstructorLoading) {
-        return <progress className="progress w-56"></progress>
+        return <div className="flex justify-center items-center h-screen">
+            <span className="loading loading-ring loading-lg"></span>
+        </div>;
     }
     if (user && isInstructor) {
         return children;

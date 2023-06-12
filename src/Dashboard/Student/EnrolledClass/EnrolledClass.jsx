@@ -2,15 +2,8 @@
 import useEnrolledClass from "../../../Hook/useEnrolledClass";
 
 const EnrolledClass = () => {
-    // const { user } = useAuth();
-    // const [axiosSecure] = useAxiosSecure();
-    // const { data: myEnrolledClass = [] } = useQuery(['myEnrolledClass', user?.email],
-    //     async () => {
-    //         const res = await axiosSecure.get(`/myEnrolledClass/${user?.email}`);
-    //         return res.data;
-    //     }
-    // )
-    const [myEnrolledClass, isLoading] = useEnrolledClass();
+
+    const [myEnrolledClass] = useEnrolledClass();
     console.log("myEnrolledClass", myEnrolledClass);
     return (
         <div className="lg:mx-10">

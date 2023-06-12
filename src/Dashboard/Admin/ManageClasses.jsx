@@ -4,12 +4,15 @@ import MyClasses from "../../components/MyClasses";
 
 const ManageClasses = () => {
     const [axiousSecure] = useAxiosSecure();
-    const { data: allClasses = [], refetch } = useQuery(['allClasses'],
+    const { data: allClasses = [], refetch, isLoading } = useQuery(['allClasses'],
         async () => {
             const res = await axiousSecure.get('/manageClasses');
             return res.data;
         }
     )
+    if (isLoading) {
+        return <span className="loading loading-ring loading-lg"></span>
+    }
 
 
 
