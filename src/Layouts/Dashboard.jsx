@@ -8,6 +8,7 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const [isStudent] = useStudent();
+
     return (
         <div>
             <div className="drawer lg:drawer-open">

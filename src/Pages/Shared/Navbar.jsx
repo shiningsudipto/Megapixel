@@ -23,18 +23,18 @@ const Navbar = () => {
     }
 
     const [isAdmin] = useAdmin();
-    console.log("User role", isAdmin);
+    // console.log("User role", isAdmin);
     const [isInstructor] = useInstructor();
     // console.log(isInstructor);
     const [isStudent] = useStudent();
-    // console.log(isStudent);
-
+    console.log(isStudent);
     const { logOut, user } = useAuth();
     // console.log(user);
+
     const navOptions = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/Allclasseshere'>Classes</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
-        <li><Link to='/classes'>Classes</Link></li>
         {
             isAdmin &&
             <li><Link to='/dashboard/manageclasses'>Dashboard</Link></li>

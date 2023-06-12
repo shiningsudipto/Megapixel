@@ -18,7 +18,7 @@ const About = () => {
             </div>
             <div className='container mx-auto'>
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-5">
-                    <div>
+                    <div className='lg:p-0 px-3'>
                         <Slide>
                             <h3 className='text-xl font-semibold text-fuchsia-500 mb-3'>A short overview about us.</h3>
                         </Slide>

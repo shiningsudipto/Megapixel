@@ -5,16 +5,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useRole from "../../Hook/useRole";
 
-
-
 const SingleClass = ({ classItem }) => {
     const [axiosSecure] = useAxiosSecure();
     const { user } = useAuth();
     const [userRole] = useRole();
-    const role = userRole.role;
+    const role = userRole?.role;
     console.log('user role:', role);
-
-
 
     const { image, name, instructorName, price, availableSeats } = classItem;
 
