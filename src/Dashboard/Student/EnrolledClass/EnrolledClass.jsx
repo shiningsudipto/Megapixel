@@ -1,6 +1,4 @@
-// import { useQuery } from "@tanstack/react-query";
-// import useAuth from "../../../Hook/useAuth";
-// import useAxiosSecure from "../../../Hook/useAxiosSecure";
+
 import useEnrolledClass from "../../../Hook/useEnrolledClass";
 
 const EnrolledClass = () => {
