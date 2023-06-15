@@ -36,16 +36,16 @@ const About = () => {
                     </div>
                     <div className='grid lg:grid-cols-2 grid-cols-1 gap-4 p-4'>
                         <Slide direction='up' cascade fraction={0}>
-                            <img className='lg:h-[210px] border p-3 border-fuchsia-600' src={image} alt="" />
+                            <img className='lg:h-[210px] md:w-full border p-3 border-fuchsia-600' src={image} alt="" />
                         </Slide>
                         <Slide direction='up' cascade delay={200} fraction={0}>
-                            <img className='lg:h-[210px] border p-3 border-fuchsia-600' src={image1} alt="" />
+                            <img className='lg:h-[210px] md:w-full border p-3 border-fuchsia-600' src={image1} alt="" />
                         </Slide>
                         <Slide direction='up' cascade delay={400} fraction={0}>
-                            <img className='lg:h-[210px] border p-3 border-fuchsia-600' src={image2} alt="" />
+                            <img className='lg:h-[210px] md:w-full border p-3 border-fuchsia-600' src={image2} alt="" />
                         </Slide>
                         <Slide direction='up' cascade delay={600} fraction={0}>
-                            <img className='lg:h-[210px] border p-3 border-fuchsia-600' src={image3} alt="" />
+                            <img className='lg:h-[210px] md:w-full border p-3 border-fuchsia-600' src={image3} alt="" />
                         </Slide>
                     </div>
                 </div>

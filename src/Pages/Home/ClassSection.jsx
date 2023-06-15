@@ -18,7 +18,7 @@ const ClassSection = () => {
                 </Slide>
 
             </div>
-            <div className="grid lg:grid-cols-3 grid-cols-1">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
                 {
                     slicedClasses.map(classItem => (
                         <ClassCard

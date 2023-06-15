@@ -65,7 +65,17 @@ const MyClasses = ({ singleClass, refetch }) => {
                             {
                                 (location.pathname === "/dashboard/instructorsclass" && singleClass?.feedback)
                                 &&
-                                <p>Feedback: <span className="text-fuchsia-500">{singleClass?.feedback}</span></p>
+                                <>
+                                    <p>Feedback: <span className="text-fuchsia-500">{singleClass?.feedback}</span></p>
+                                </>
+
+                            }
+                            {
+                                (location.pathname === "/dashboard/instructorsclass")
+                                &&
+                                <>
+                                    <button className="btn bg-fuchsia-500 text-white hover:bg-white font-bold hover:text-fuchsia-500 hover:border-fuchsia-600 hover:border-2">Update</button>
+                                </>
                             }
                         </div>
                         {
@@ -109,7 +119,6 @@ const MyClasses = ({ singleClass, refetch }) => {
                                 </Link>
                             </div>
                         }
-
                     </div>
                 </div>
             </div>
